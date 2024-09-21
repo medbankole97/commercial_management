@@ -23,11 +23,11 @@ Avant d'installer et d'exécuter cette application, assurez-vous que les outils 
 
 1. **Cloner le dépôt** :
    ```bash
-   git clone https://github.com/medbankole97/commercial_management_app.git
+   git clone https://github.com/medbankole97/commercial_management.git
 
 2. **Acceder au dossier du projet**
    ```bash
-   cd commercial_management_app
+   cd commercial_management
    ```
 
 3. **Installez les dépendances**
