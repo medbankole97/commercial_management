@@ -38,12 +38,7 @@
       <div class="modal-content" @click.stop>
         <div class="modal-header d-flex justify-content-between mb-4 border-bottom">
           <h5 class="modal-title mb-4">View Customer</h5>
-          <!-- <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >x</button> -->
+       
             <button type="button" class="btn-close mb-4" data-bs-dismiss="modal"
         aria-label="Close" @click="closeModal" style="color: black;">x</button>
 
@@ -77,12 +72,7 @@
       <div class="modal-content" @click.stop>
         <div class="modal-header d-flex justify-content-between mb-4 border-bottom">
           <h5 class="modal-title mb-4">View Customer</h5>
-          <!-- <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >x</button> -->
+         
           <button type="button" class="btn-close mb-4" data-bs-dismiss="modal"
           aria-label="Close" @click="closeModal">x</button>
         </div>
@@ -205,10 +195,6 @@ function remove (index)  {
  }
 };
 
-
-
-
-
 </script>
 
 <style scoped>
@@ -266,7 +252,7 @@ th {
 
 .modal-body input,
 .modal-body textarea {
-  background-color: #ececec; /* Gris clair */
+  background-color: #ececec; 
   border: 1px solid #ccc;
   padding: 8px;
   border-radius: 4px;
