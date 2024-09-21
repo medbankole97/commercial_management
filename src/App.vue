@@ -1,30 +1,85 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-light bg-light">
+      <div class="container">
+        <ul class="nav">
+          <li class="nav-item">
+            <router-link
+              :class="['nav-link', { active: linkActive === 'customers-list' }]"
+              to="/customers" @click="buttonFocus('customers-list')"
+            >
+              <i :class="['fa-solid', 'fa-users', { active: $route.name === 'customers-list' }]"></i>
+              Customers
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link
+              :class="['nav-link', { active: linkActive === 'products-list' }]"
+              to="/products" @click="buttonFocus('products-list')"
+            >
+              <i :class="['fa-solid', 'fa-box-open', { active: $route.name === 'products-list' }]"></i>
+              Products
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link
+              :class="['nav-link', { active: linkActive === 'order-list' }]"
+              to="/orders" @click="buttonFocus('order-list')"
+            >
+              <i :class="['fa-solid', 'fa-cart-shopping', { active: $route.name === 'order-list' }]"></i>
+              Orders
+            </router-link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <router-view></router-view>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
+<script setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+
+const linkActive = ref('customers-list'); // Par défaut "Customers" actif
+const route = useRoute();
+
+// Vérification de la route active au montage du composant
+onMounted(() => {
+  if (route.name === 'products-list') {
+    linkActive.value = 'products-list';
+  } else if (route.name === 'order-list') {
+    linkActive.value = 'order-list';
+  } else {
+    linkActive.value = 'customers-list'; // "Customers" par défaut
+  }
+});
+
+const buttonFocus = (val) => {
+  linkActive.value = val;
+};
+</script>
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+/* Couleur noire par défaut */
+.nav-link {
+  color: black;
+  transition: color 0.3s ease;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+
+.nav-link.active {
+  color: blue;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+
+.nav-link i {
+  color: black;
+}
+
+.nav-link.active i {
+  color: blue;
 }
 </style>
